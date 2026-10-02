@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alvin Ngeiywo portfolio
+  </title>
+  <link rel="icon" type="image/png" href="mylogo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="progressBar"></div>
+  <header class="nav">
+    <a href="#hero" class="logo">
+           <img src="mylogo.png" alt="Alvin Ngeiywo logo" class="logo-img" />
+      <span>Alvin Ngeiywo</span>
+    </a>
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav id="navLinks" class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+      <button id="modeToggle" class="mode-toggle" aria-label="Toggle tech/poetic mode">
+        <span class="mode-opt">Tech</span>
+        <span class="mode-opt">Poetic</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="techView">
+    <section id="hero" class="hero">
+      <h1>Hi, I'm <span class="accent">Alvin Ngeiywo</span>.</h1>
+      <p class="role">I'm a <span id="typed"></span><span class="cursor">|</span></p>
+      <p>I build simple, fast, and thoughtful digital experiences with security in mind.</p>
+      <a href="#projects" class="btn">View my work</a>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="about-layout">
+        <img src="alvin.png" alt="Alvin Ngeiywo photo" class="about-photo" />
+        <div>
+          <p>
+            I've been building websites for a few years, starting with small hobby projects
+            and still growing. I care about clean code, accessible
+            interfaces, and details that make a product feel polished.
+          </p>
+          <p>
+            When I'm not coding, you'll find me reading design books, trying new things, or exploring side quests.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <article class="card">
+          <h3>Task Manager</h3>
+          <p>A simple to-do app with local storage persistence.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <button class="link-btn" data-project="Task Manager" data-details="Built a lightweight task manager with drag-and-drop ordering, due dates, and offline support via localStorage. Focused on minimal UI and fast keyboard interaction.">Details</button>
+        </article>
+        <article class="card">
+          <h3>Weather App</h3>
+          <p>Fetches live weather data from a public API.</p>
+          <div class="tags"><span>JavaScript</span><span>API</span></div>
+          <button class="link-btn" data-project="Weather App" data-details="A weather lookup app using the OpenWeatherMap API with a 5-day forecast, geolocation support, and error handling for invalid cities.">Details</button>
+        </article>
+        <article class="card">
+          <h3>Portfolio v1</h3>
+          <p>My first personal website — where it all started.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span></div>
+          <button class="link-btn" data-project="Portfolio v1" data-details="A static one-page portfolio built with plain HTML and CSS. First project where I learned semantic markup and responsive layout basics.">Details</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <form id="contactForm" novalidate>
+        <label>Name <input type="text" name="name" id="name" /></label>
+        <label>Email <input type="email" name="email" id="email" /></label>
+        <label>Message <textarea name="message" id="message" rows="4" maxlength="500"></textarea></label>
+        <p id="charCount" class="counter">0 / 500</p>
+        <p id="formError" class="error"></p>
+        <p id="formSuccess" class="success"></p>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+    </div>
+
+    <div id="poeticView" hidden>
+      <section class="poetic-hero">
+        <p class="poetic-kicker">a space for verses</p>
+        <h1>Alvin Ngeiywo</h1>
+        <p class="poetic-verse">
+          I write in the quiet hours,<br/>
+          in the spaces between keystrokes,<br/>
+          between the day and the dream.
+        </p>
+      </section>
+
+      <section class="section poetic-section">
+        <h2>Verses</h2>
+        <p class="poem">
+          Some people build with bricks,<br/>
+          I build with breath and line —<br/>
+          words shaped like windows<br/>
+          where the light gets in.
+        </p>
+      </section>
+
+      <section class="section poetic-section">
+        <h2>Stanzas</h2>
+        <div class="stanza-list">
+          <article class="card poem-card">
+            <h3>On Security</h3>
+            <p>A lock is a promise made to strangers —<br/>and kept anyway.</p>
+          </article>
+          <article class="card poem-card">
+            <h3>On Code</h3>
+            <p>Each semicolon a held breath,<br/>each function a small, quiet room.</p>
+          </article>
+          <article class="card poem-card">
+            <h3>On Mornings</h3>
+            <p>The kettle sings, the screen waits,<br/>and the first word arrives like light.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section poetic-section">
+        <h2>Letters</h2>
+        <p>If a verse found you — write to me:
+          <a href="mailto:alvinngeiywo43@gmail.com" class="poem-link">alvinngeiywo43@gmail.com</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Alvin Ngeiywo. alvinngeiywo43@gmail.com</p>
+  </footer>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" aria-label="Close">&times;</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDetails"></p>
+    </div>
+  </div>
+
+  <button id="toTop" aria-label="Back to top">&uarr;</button>
+  <script src="script.js"></script>
+</body>
+</html>
