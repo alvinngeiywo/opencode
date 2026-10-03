@@ -6,12 +6,13 @@
   <title>Poetry Library — Alvin Ngeiywo</title>
   <link rel="icon" type="image/png" href="mylogo-trim.png" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Patrick+Hand&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=7" />
   <script>
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
     document.documentElement.setAttribute('data-mode', 'poetic');
+    sessionStorage.setItem('mode', 'poetic');
   </script>
 </head>
 <body>
@@ -27,77 +28,33 @@
       <h1>Library</h1>
       <p class="poem">Every piece, in one quiet room.</p>
 
-      <section id="teasers">
-
-      <article class="poem-entry" id="nostalgia">
-        <h3>Nostalgia</h3>
-        <p class="poem-teaser">
-          A short description of what this piece covers — you fill this in.
-        </p>
-        <p class="poem-body">
-          Poem lines go here.<br/>
-          Add your real lines later.
-        </p>
-      </article>
-
-      <article class="poem-entry" id="identity">
-        <h3>On Identity</h3>
-        <p class="poem-teaser">
-          A short description of what this piece covers — you fill this in.
-        </p>
-        <p class="poem-body">
-          Poem lines go here.<br/>
-          Add your real lines later.
-        </p>
-      </article>
-
-      <article class="poem-entry" id="on-found">
-        <h3>On Found</h3>
-        <p class="poem-teaser">
-          A short description of what this piece covers — you fill this in.
-        </p>
-        <p class="poem-body">
-          Poem lines go here.<br/>
-          Add your real lines later.
-        </p>
-      </article >
-      </section>
-
       <h2 style="margin: 32px 0 8px;">From the journal</h2>
       <div id="fullPoems"></div>
 
     </section>
   </main>
 
+  <script src="poems.js"></script>
   <script>
-    const poemFiles = [
-      "Anger.txt", "Anxiety.txt", "At least.txt", "Becoming myself .txt",
-      "Beyond the physical rush .txt", "Clear Again.txt", "Ephemeral.txt", "Exit.txt",
-      "Found.txt", "Good things.txt", "Growing up.txt", "Hear me .txt", "Heartbeat.txt",
-      "IDENTITY.txt", "Its an illusion.txt", "M_ I_ A.txt", "Nostalgia.txt", "Reverie.txt",
-      "The Cruel kind of kind_.txt", "What if  II.txt", "What if.txt"
-    ];
     const container = document.getElementById('fullPoems');
-    poemFiles.forEach(file => {
-      fetch('Exports/' + encodeURIComponent(file))
-        .then(r => r.ok ? r.text() : Promise.reject(r.status))
-        .then(text => {
-          const title = file.replace(/\.txt$/, '').trim();
-          const art = document.createElement('article');
-          art.className = 'poem-entry';
-          art.id = 'poem-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-          const h = document.createElement('h3');
-          h.textContent = title;
-          const p = document.createElement('p');
-          p.className = 'poem-body';
-          p.textContent = text;
-          p.style.whiteSpace = 'pre-line';
-          art.appendChild(h);
-          art.appendChild(p);
-          container.appendChild(art);
-        })
-        .catch(() => console.warn('Could not load', file));
+    (window.POEMS || []).forEach(poem => {
+      const art = document.createElement('article');
+      art.className = 'poem-entry';
+      art.id = poem.id;
+      const h = document.createElement('h3');
+      h.textContent = poem.title;
+      const p = document.createElement('p');
+      p.className = 'poem-body';
+      p.textContent = poem.text;
+      p.style.whiteSpace = 'pre-line';
+      art.appendChild(h);
+      art.appendChild(p);
+      container.appendChild(art);
     });
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   </script>
 
   <footer>

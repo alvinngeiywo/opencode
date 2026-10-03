@@ -16,14 +16,14 @@ themeToggle.addEventListener('click', () => {
 
 // Mode toggle (tech / poetic), persisted
 const modeToggle = document.getElementById('modeToggle');
-const savedMode = localStorage.getItem('mode');
+const savedMode = sessionStorage.getItem('mode');
 if (savedMode) document.documentElement.setAttribute('data-mode', savedMode);
 else document.documentElement.setAttribute('data-mode', 'tech');
 modeToggle.addEventListener('click', () => {
   const current = document.documentElement.getAttribute('data-mode');
   const next = current === 'poetic' ? 'tech' : 'poetic';
   document.documentElement.setAttribute('data-mode', next);
-  localStorage.setItem('mode', next);
+  sessionStorage.setItem('mode', next);
   applyModeView(next);
 });
 const techView = document.getElementById('techView');
@@ -47,7 +47,7 @@ function updateNavHrefs(mode) {
     }
   });
 }
-applyModeView(localStorage.getItem('mode') || 'tech');
+applyModeView(sessionStorage.getItem('mode') || 'tech');
 
 // Mobile menu
 const menuToggle = document.getElementById('menuToggle');
