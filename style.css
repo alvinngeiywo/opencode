@@ -22,6 +22,28 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html[data-mode="tech"] {
+  --bg: #2e2e2e;
+  --fg: #e9e9e9;
+  --muted: #b3b3b3;
+  --border: #454545;
+  --card: #3a3a3a;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --accent: #9aa0a6;
+  --on-accent: #2b2b2b;
+}
+
+html[data-mode="poetic"] {
+  --bg: #f3ead9;
+  --fg: #4a3b2c;
+  --muted: #8a7458;
+  --border: #e2d5bd;
+  --card: #faf4e6;
+  --shadow: rgba(0, 0, 0, 0.12);
+  --accent: #a9803e;
+  --on-accent: #ffffff;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -51,6 +73,10 @@ main { max-width: 720px; margin: 0 auto; padding: 0 20px; }
   mix-blend-mode: multiply;
 }
 [data-theme="dark"] .logo-img {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+[data-mode="tech"] .logo-img {
   filter: invert(1);
   mix-blend-mode: screen;
 }
