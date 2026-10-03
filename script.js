@@ -32,6 +32,20 @@ function applyModeView(mode) {
   const poetic = mode === 'poetic';
   techView.hidden = poetic;
   poeticView.hidden = !poetic;
+  updateNavHrefs(mode);
+}
+const navAnchors = document.querySelectorAll('.nav-links a');
+function updateNavHrefs(mode) {
+  const map = mode === 'poetic'
+    ? { about: ['#poetic-verses', 'Verses'], projects: ['#poetic-stanzas', 'Stanzas'], contact: ['#poetic-letters', 'Letters'] }
+    : { about: ['#about', 'About'], projects: ['#projects', 'Projects'], contact: ['#contact', 'Contact'] };
+  navAnchors.forEach(a => {
+    const key = a.dataset.nav;
+    if (key && map[key]) {
+      a.setAttribute('href', map[key][0]);
+      a.textContent = map[key][1];
+    }
+  });
 }
 applyModeView(localStorage.getItem('mode') || 'tech');
 
@@ -110,7 +124,6 @@ document.querySelectorAll('.card').forEach((card, i) => {
 const progressBar = document.getElementById('progressBar');
 const toTop = document.getElementById('toTop');
 const sections = document.querySelectorAll('main section');
-const navAnchors = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -119,7 +132,7 @@ window.addEventListener('scroll', () => {
 
   let currentId = '';
   sections.forEach(s => {
-    if (scrollTop >= s.offsetTop - 120) currentId = s.id;
+    if (s.offsetParent !== null && scrollTop >= s.offsetTop - 120) currentId = s.id;
   });
   navAnchors.forEach(a =>
     a.classList.toggle('active', a.getAttribute('href') === '#' + currentId)
