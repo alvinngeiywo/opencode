@@ -289,6 +289,8 @@ footer {
   border-radius: 10px;
   display: block;
   margin-bottom: 24px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
 }
 .poetic-kicker { color: var(--muted); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
 .poetic-verse { font-style: italic; color: var(--muted); margin-top: 16px; }
