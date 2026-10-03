@@ -1,19 +1,4 @@
-// Theme toggle (persisted)
-const themeToggle = document.getElementById('themeToggle');
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-}
-themeToggle.addEventListener('click', () => {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  if (isDark) {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', 'light');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', 'dark');
-  }
-});
-
+// Theme persistence removed — mode decides the palette now.
 // Mode toggle (tech / poetic), persisted
 const modeToggle = document.getElementById('modeToggle');
 const savedMode = sessionStorage.getItem('mode');
