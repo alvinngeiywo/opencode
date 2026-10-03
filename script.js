@@ -13,11 +13,16 @@ modeToggle.addEventListener('click', () => {
 });
 const techView = document.getElementById('techView');
 const poeticView = document.getElementById('poeticView');
-function applyModeView(mode) {
+function applyModeView(mode, animate = true) {
   const poetic = mode === 'poetic';
   techView.hidden = poetic;
   poeticView.hidden = !poetic;
   updateNavHrefs(mode);
+  if (!animate) return;
+  const incoming = poetic ? poeticView : techView;
+  incoming.classList.remove('enter-paper', 'enter-glitch');
+  void incoming.offsetWidth;
+  incoming.classList.add(poetic ? 'enter-paper' : 'enter-glitch');
 }
 const navAnchors = document.querySelectorAll('.nav-links a');
 function updateNavHrefs(mode) {
@@ -32,7 +37,7 @@ function updateNavHrefs(mode) {
     }
   });
 }
-applyModeView(sessionStorage.getItem('mode') || 'tech');
+applyModeView(sessionStorage.getItem('mode') || 'tech', false);
 
 // Mobile menu
 const menuToggle = document.getElementById('menuToggle');
