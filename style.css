@@ -264,11 +264,13 @@ footer {
 .card.visible { transition: transform 0.25s ease, box-shadow 0.25s ease; }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  .reveal, .hero h1, .hero p, .hero .btn,
+  .poetic-text > *, .stanza-list .card, .poem-card {
     animation: none !important;
     transition: none !important;
+    opacity: 1;
+    transform: none;
   }
-  .reveal { opacity: 1; transform: none; }
 }
 
 /* Progress bar + back to top */
