@@ -153,6 +153,28 @@ main { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 .counter { font-size: 0.8rem; color: var(--muted); text-align: right; margin-top: -8px; margin-bottom: 14px; }
 
 /* Contact */
+.contact-intro { font-size: 1.05rem; }
+.tech-note {
+  font-family: "Space Grotesk", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 14px;
+  margin: 16px 0;
+  white-space: pre-wrap;
+}
+.contact-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+.btn-alt { background: transparent; color: var(--fg); border-color: var(--border); }
+.btn-alt:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+.insta-block { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
+.insta-qr { width: 120px; height: auto; border-radius: 8px; background: #fff; padding: 6px; }
+.poetic-section .insta-qr {
+  mix-blend-mode: multiply;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+.insta-block p { margin: 0; }
 form label { display: block; margin-bottom: 14px; font-size: 0.95rem; }
 form input, form textarea {
   width: 100%;

@@ -130,34 +130,4 @@ window.addEventListener('scroll', () => {
 });
 toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Character counter
-const messageInput = document.getElementById('message');
-const charCount = document.getElementById('charCount');
-messageInput.addEventListener('input', () => {
-  charCount.textContent = messageInput.value.length + ' / 500';
-});
-
-// Contact form validation
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const error = document.getElementById('formError');
-  const success = document.getElementById('formSuccess');
-
-  error.textContent = '';
-  success.textContent = '';
-
-  if (!name || !email || !message) {
-    error.textContent = 'Please fill in all fields.';
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    error.textContent = 'Please enter a valid email address.';
-    return;
-  }
-  success.textContent = 'Thanks, ' + name + '! Your message has been sent.';
-  form.reset();
-});
+// Contact form removed — email and call buttons replace it.
